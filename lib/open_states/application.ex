@@ -7,8 +7,7 @@ defmodule OpenStates.Application do
   use Receiver, as: :credentials
 
   def start(_type, _args) do
-    api_key = Application.get_env(:open_states, :api_key, System.get_env("OPENSTATES_API_KEY"))
-    start_credentials(fn -> api_key end)
+    set_api_key_from_env()
 
     children = []
 
@@ -18,4 +17,11 @@ defmodule OpenStates.Application do
 
   @spec api_key() :: String.t()
   def api_key, do: get_credentials()
+
+  @spec set_api_key_from_env() :: :ok
+  def set_api_key_from_env do
+    start_credentials()
+    api_key = Application.get_env(:open_states, :api_key, System.get_env("OPENSTATES_API_KEY"))
+    update_credentials(fn _ -> api_key end)
+  end
 end

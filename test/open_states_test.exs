@@ -1,5 +1,5 @@
 defmodule OpenStatesTest do
-  use ExUnit.Case, async: true
+  use ExUnit.Case, async: false
   import Mock
   doctest OpenStates
 
@@ -9,6 +9,19 @@ defmodule OpenStatesTest do
 
   test "api_key/0 returns the API key configured as an env variable" do
     assert OpenStates.api_key() == System.get_env("OPENSTATES_API_KEY")
+  end
+
+  test "api_key/0 can be overriden in Application config" do
+    original = OpenStates.api_key()
+    Application.put_env(:open_states, :api_key, "hello")
+    :ok = OpenStates.Application.set_api_key_from_env()
+
+    assert OpenStates.api_key() == "hello"
+
+    Application.put_env(:open_states, :api_key, original)
+    :ok = OpenStates.Application.set_api_key_from_env()
+
+    assert OpenStates.api_key() == original
   end
 
   test "headers/0 returns the API query headers" do
