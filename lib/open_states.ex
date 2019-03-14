@@ -22,6 +22,7 @@ defmodule OpenStates do
 
       iex> OpenStates.api_key()
       System.get_env("OPENSTATES_API_KEY")
+
   """
   @spec api_key() :: String.t()
   defdelegate api_key, to: OpenStates.Application
@@ -33,6 +34,7 @@ defmodule OpenStates do
 
       iex> OpenStates.headers()
       ["X-API-KEY": OpenStates.api_key()]
+
   """
   @spec headers() :: keyword
   def headers, do: ["X-API-KEY": api_key()]
@@ -53,6 +55,7 @@ defmodule OpenStates do
         }}
         \"\"\")
       #=> {:ok, %Neuron.Response{body: %{ ... }, headers: [ ... ], status_code: 200}}
+
   """
   @spec query(query_string :: String.t()) ::
           {:ok, Neuron.Response.t()} | {:error, response :: term}
