@@ -28,7 +28,7 @@ defmodule OpenStates do
   defdelegate api_key, to: OpenStates.Application
 
   @doc """
-  Returns the API headers.
+  Returns the request headers.
 
   ## Examples
 
@@ -62,4 +62,22 @@ defmodule OpenStates do
   def query(query_string) do
     Neuron.query(query_string, _variables = %{}, url: url(), headers: headers())
   end
+
+  @doc """
+  Calls `query/1` passing the string as the argument.
+
+  ## Example
+
+      ~q\"\"\"
+      {jurisdictions {
+        edges {
+          node {
+            id
+          }
+        }
+      }}
+      \"\"\"
+      #=> {:ok, %Neuron.Response{body: %{ ... }, headers: [ ... ], status_code: 200}}
+  """
+  def sigil_q(query_string, []), do: query(query_string)
 end

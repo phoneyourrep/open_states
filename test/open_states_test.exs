@@ -34,4 +34,13 @@ defmodule OpenStatesTest do
                {"hello", [url: OpenStates.url(), headers: OpenStates.headers()]}
     end
   end
+
+  test "sigil_q/2 sends an API query via Neuron.query/3" do
+    with_mock Neuron, query: fn query_string, _, headers -> {query_string, headers} end do
+      import OpenStates, only: [sigil_q: 2]
+
+      assert ~q"hello" ==
+               {"hello", [url: OpenStates.url(), headers: OpenStates.headers()]}
+    end
+  end
 end
