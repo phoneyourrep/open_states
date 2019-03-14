@@ -1,11 +1,8 @@
 # OpenStates
 
-**TODO: Add description**
+An Elixir client for the OpenStates GraphQL API
 
 ## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `open_states` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
@@ -15,7 +12,16 @@ def deps do
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/open_states](https://hexdocs.pm/open_states).
+Configure your [OpenStates API key](https://openstates.org/api/register/) as an environment variable with the name `"OPENSTATES_API_KEY"`. Alternatively you can configure the key in your `config.exs` file:
 
+```elixir
+config :open_states, api_key: "xxxxxxxxxxxxxxxxx"
+```
+
+See [online documentation](https://hexdocs.pm/open_states) for usage and API reference.
+
+# Contributing
+Clone this repository and run the tests with `mix test` to make sure they pass. Make your changes, writing documentation and tests for all new functionality. Changes will not be merged without accompanying tests and docs. Run `mix open_states.build` to run the formatter, tests, linter, and generate Coveralls report and docs metrics. Development should be done with `Elixir version ~> 1.8` for proper formatter output, and the build task will raise an exception if using a version less than `1.8`. Now you're ready to submit a [pull request](https://help.github.com/en/articles/about-pull-requests)
+
+# License
+[MIT - Copyright (c) 2019 M. Simon Borg](LICENSE.txt)
