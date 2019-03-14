@@ -1,0 +1,17 @@
+language: elixir
+
+elixir:
+  - 1.7.4
+  - 1.8.1
+
+otp_release:
+  - 20.3
+before_script:
+  - if elixir -v | grep -q 1.8; then mix format --check-formatted; fi # only enforce formatting for Elixir ~> 1.8
+
+script:
+  - mix coveralls.safe_travis
+  - mix credo --strict
+
+after_script:
+  - MIX_ENV=test mix inch.report
