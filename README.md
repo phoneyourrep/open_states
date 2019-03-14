@@ -1,4 +1,7 @@
 # OpenStates
+[![Build Status](https://travis-ci.org/msimonborg/open_states.svg?branch=master)](https://travis-ci.org/msimonborg/open_states)
+[![Coverage Status](https://coveralls.io/repos/github/msimonborg/open_states/badge.svg?branch=master)](https://coveralls.io/github/msimonborg/open_states?branch=master)
+[![Hex pm](https://img.shields.io/hexpm/v/open_states.svg?style=flat)](https://hex.pm/packages/open_states)
 
 An Elixir client for the OpenStates GraphQL API
 
