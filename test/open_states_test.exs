@@ -31,7 +31,7 @@ defmodule OpenStatesTest do
   test "query/1 sends an API query via Neuron.query/3" do
     with_mock Neuron, query: fn query_string, _, headers -> {query_string, headers} end do
       assert OpenStates.query("hello") ==
-               {"hello", [url: OpenStates.url(), headers: OpenStates.headers()]}
+               {"hello", [url: OpenStates.url(), headers: OpenStates.headers(), timeout: 8000]}
     end
   end
 
@@ -40,7 +40,7 @@ defmodule OpenStatesTest do
       import OpenStates, only: [sigil_q: 2]
 
       assert ~q"hello" ==
-               {"hello", [url: OpenStates.url(), headers: OpenStates.headers()]}
+               {"hello", [url: OpenStates.url(), headers: OpenStates.headers(), timeout: 8000]}
     end
   end
 end

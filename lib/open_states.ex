@@ -63,8 +63,8 @@ defmodule OpenStates do
 
   """
   @spec query(query_string :: String.t()) :: response
-  def query(query_string) do
-    Neuron.query(query_string, _variables = %{}, url: url(), headers: headers())
+  def query(query_string, timeout \\ 8000) do
+    Neuron.query(query_string, _variables = %{}, url: url(), headers: headers(), timeout: timeout)
   end
 
   @doc """
