@@ -1,14 +1,14 @@
 defmodule OpenStates.MixProject do
   use Mix.Project
 
-  @version "0.1.1"
-  @repo_url "https://github.com/msimonborg/open_states"
+  @version "0.1.2"
+  @repo_url "https://github.com/phoneyourrep/open_states"
 
   def project do
     [
       app: :open_states,
       version: @version,
-      elixir: "~> 1.7",
+      elixir: "~> 1.5",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       package: package(),
