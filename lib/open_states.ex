@@ -63,7 +63,7 @@ defmodule OpenStates do
 
   """
   @spec query(query_string :: String.t()) :: response
-  def query(query_string, opts) do
+  def query(query_string, opts \\ []) do
     opts = Keyword.merge(opts, [url: url(), headers: headers()])
     Neuron.query(query_string, _variables = %{}, opts)
   end
